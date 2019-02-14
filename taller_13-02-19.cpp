@@ -75,5 +75,5 @@ void programa2() {
 }
 
 void programa3() {
-  /* code */
+  std::cout << "hello world" << '\n';
 }
