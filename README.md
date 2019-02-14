@@ -5,4 +5,4 @@ clase
 
 1. 06/02/19
 2. 13/02/19
-    tema: metodo cascada, taller realizado utilizando esta metodologia.
+    tema: metodo cascada, taller realizado utilizando esta metodologia (taller_13-02-19.cpp).
