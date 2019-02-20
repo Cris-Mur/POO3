@@ -171,13 +171,12 @@ void programa2() {
 }
 
 int programa3(int n1, int n2) {
-        int r;
-        if (n2 != 0) {
-                r = programa3( n2,(n1%2));
-                return r;
-        }else{
-                r = n1;
-                return r;
+        if (n1 < n2){
+                return programa3(n2, n1);
+        } else if (n2 == 0){
+                return n1;
+        } else {
+                return programa3(n2, int(n1%n2));
         }
 }
 
@@ -211,11 +210,26 @@ void programa5() {
 }
 
 void programa6() {
-        int sizeArray, aux;
-        std::cout << "ingrese el tamaño del arreglo." << '\n'
+        int x, cont, z, i,tamano;
+        std::cout << "ingrese el tamano del arreglo." << '\n'
                   << "tamaño: ";
-        std::cin >> sizeArray;
-        int array[sizeArray];     //hasta aca funciona no me jodas
+        std::cin >> tamano;
+        int primo[tamano];
+        for (x = 1; x < tamano; x++) {
+                cont = 0;
+                for (z = 1; z <= x; z++) {
+                        if (x%z == 0) {
+                                cont++;
+                        }
+                }
+                if (cont == 2 || z == 1 || z == 0) {
+                        primo[i]=x;
+                        i++;
+                }
+        }
+        for (x = 0; x < i; x++) {
+                std::cout << "primo [ " << x << " ]= " << primo[x] << '\n';
+        }
 }
 
 void programa7() {
