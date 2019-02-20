@@ -1,0 +1,34 @@
+Cada ejercicio debe estar desarrollado en una hoja
+como lo muestra la tabla 1, e implementarlos
+mediante funciones, bajo una sola aplicación que
+maneje menú con estructuras tipo switch.
+
+Estructuras condicionales
+
+  1. Dados dos números por el usuario identificar
+  cual es el mayor.
+  2. Dados mil (tres (si utilizan lógica)) números
+  por el usuario, identificar cual es el mayor.
+  3. Dados dos números, hallar el máximo común
+  divisor.
+  4. Hallar el factorial de un número dado por el
+  usuario.
+
+Estructuras cíclicas
+
+  1. Mostrar 100 números múltiplos de tres
+  iniciando desde un número dado por el usuario.
+  2. Llenar un arreglo con los n primeros números
+  primos, donde n es un número dado por el usuario.
+  3. Llene una matriz de 10*10, donde los valores
+  de cada celda es la suma del número de la
+    columna con el número de la fila.
+
+El siguiente ejercicio requiere de programación
+orientada a objetos, por tal motivo aplique
+cada uno de los conceptos aprendidos en el curso
+anterior (programación 2), utilice la metodología
+cascada para el desarrollo y utilice la tabla 1.
+
+  1. Haga una aplicación orientada a objetos que
+  permita almacenar vectores con n dimensiones.
