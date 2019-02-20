@@ -176,7 +176,7 @@ int programa3(int n1, int n2) {
         } else if (n2 == 0){
                 return n1;
         } else {
-                return programa3(n2, int(n1%n2));
+                return programa3(n2, (n1%n2));
         }
 }
 
