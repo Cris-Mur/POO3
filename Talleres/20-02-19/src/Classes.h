@@ -1,15 +1,31 @@
-class Structure{
-  public:
+#pragma once
+class Lista
+{
+public:
+	int dir, size;
+	int *arr;
+	bool control;
 
-    int dir = -1, size= -1;
-    int helper_dir, dato;
-    int *arr;
-    bool control;
-    int create();
-    bool cleanTest();
-    void view();
-    void add();
-
+	Lista();
+	~Lista();
+	void set_size(int);
+	int create(int);
+	bool cleanTest();
+	void add(int, int);
+	int view(int, int);
+	void eliminate();
 };
 
+
 #include "Funciones_Structure.cpp"
+
+class Pila
+{
+public:
+	int base = -1, top = -1;
+	int m, dato;
+	int *pila;
+	void create();
+	bool test();
+	void add();
+};

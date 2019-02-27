@@ -1,60 +1,93 @@
-#include <iostream>
-int Structure::create(){
-  size = 1;
-  dir = 0;
-  return dir;
+#include "Lista.h"
+
+Lista::Lista() {
+	dir = -1;
+		size = -1;
+		control = false;
 }
 
-bool Structure::cleanTest(){
-  if(dir == 0){
-    return true;
-  }else{
-    return false;
-  }
+Lista::~Lista() {
 
 }
 
-void Structure::view() {
-  Structure::cleanTest();
-  std::cout << "Lista: " << *arr << std::endl;
-  // if (Structure::cleanTest()) {
-  //   control = false;
-  // }else{
-  //   control = true;
-  //   dato = arr[helper_dir];
-  // }
+void Lista::set_size(int pm) {
+	size = pm;
 }
 
 
-void Structure::add() {
-  std::cout << "test:" <<Structure::cleanTest() << '\n';
-  if (Structure::cleanTest()) {
-    std::cout << "size: " << size << std::endl;
-    std::cout << "dir: " << dir << std::endl;
-    std::cout << "arr: " << arr << std::endl;
-    size = size +1;
-    dir = dir +1;
-    arr=new int[dato];
-  }
+int Lista::create(int pm) {
+	set_size(pm);
+	arr = new int[size];
+	dir = 0;
+	return dir;
+}
 
+bool Lista::cleanTest() {
+	if (dir == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
-/*
-  int helper;
-  if (dir < size) {
-    control = true;
-    if (helper_dir <= dir+1) {
-      helper = dir;
-      while (helper >= helper_dir) {
-        arr[helper] = arr[helper + 1];
-        helper = helper - 1;
-      }
-      arr[helper_dir] = dato;
-      dir = dir+1;
-    }else {
-      control = false;
-    }
-  }else{
+void Lista::add(int helper_dir, int dato) {
+		int j;
+		if (dir < size) {
+			control = true;
+			if (helper_dir <= dir + 1) {
+				j = dir;
+				while (j >= helper_dir) {
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				arr[helper_dir] = dato;
+				dir = dir + 1;
+			}
+			else {
+				control = false;
+			}
+		}else {
+			control = false;
+		}
+
+}
+
+int Lista::view(int helper_dir, int dato) {
+	if (Lista::cleanTest()) {
     control = false;
+  }else{
+  control = true;
+  dato = arr[helper_dir];
+	return dato;
   }
-  */
+}
+
+
+
+#include "Pila.h"
+
+void Pila::create() {
+	top = 0;
+	base = 0;
+}
+
+bool Pila::test() {
+	if (base >= 0) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+void Pila::add() {
+	if (base == 0 && top == 0) {
+		base++;
+		top++;
+		pila = new int[dato];
+		top++;
+	}else if (top > base) {
+		pila = new int[dato];
+		top++;
+	}
 }
