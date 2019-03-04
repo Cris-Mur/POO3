@@ -1,4 +1,4 @@
-#include "Lista.h"
+#include "Classes.h"
 
 Lista::Lista() {
 	dir = -1;
@@ -13,7 +13,6 @@ Lista::~Lista() {
 void Lista::set_size(int pm) {
 	size = pm;
 }
-
 
 int Lista::create(int pm) {
 	set_size(pm);
@@ -56,6 +55,8 @@ void Lista::add(int helper_dir, int dato) {
 int Lista::view(int helper_dir, int dato) {
 	if (Lista::cleanTest()) {
     control = false;
+		dato = arr[0];
+		return dato;
   }else{
   control = true;
   dato = arr[helper_dir];
@@ -63,31 +64,121 @@ int Lista::view(int helper_dir, int dato) {
   }
 }
 
+void Lista::eliminate(int helper_dir, int dato) {
+	int cont = helper_dir;
+	if (cont <= dir) {
 
+		while (cont <= dir) {
+			arr[cont] = arr[cont+1];
+			cont++;
+		}
+		arr[dir]=arr[0];
+		control = true;
+		dir = dir - 1;
 
-#include "Pila.h"
-
-void Pila::create() {
-	top = 0;
-	base = 0;
+	}else{
+		control = false;
+		dato = arr[0];
+	}
 }
 
-bool Pila::test() {
-	if (base >= 0) {
+void Lista::destroy(int helper_dir, int dato) {
+	helper_dir = 1;
+	while (dir > 0) {
+		eliminate(helper_dir, dato);
+	}
+	Lista();
+	arr = NULL;
+}
+
+
+
+Pila::Pila(){
+	base = -1;
+	top = -1;
+	control = false;
+}
+
+Pila::~Pila() {
+
+}
+
+void Pila::set_sizePila(int pm) {
+	size = pm;
+}
+
+int Pila::create(int pm) {
+	set_sizePila(pm);
+	pila = new int[size];
+	base = 0;
+	top = 0;
+	return top;
+}
+
+bool Pila::cleanTest() {
+	if (base == 0 && top == 0) {
 		return true;
-	}else{
+	}
+	else {
 		return false;
 	}
 }
 
-void Pila::add() {
-	if (base == 0 && top == 0) {
-		base++;
-		top++;
-		pila = new int[dato];
-		top++;
-	}else if (top > base) {
-		pila = new int[dato];
-		top++;
+
+void Pila::add(int helper_top, int dato) {
+	int j;
+		if (top < size) {
+			control = true;
+			if (helper_top <= top +1) {
+				j = top;
+				while (j >= helper_top) {
+
+					pila[j + 1] = pila[j];
+					j = j -1;
+				}
+				pila[helper_top] = dato;
+				top = top + 1;
+			}else{
+				control = false;
+			}
+		}else{
+			control = false;
+		}
+}
+
+int Pila::view(int helper_top, int dato) {
+	if (cleanTest()) {
+		control = false;
+		dato = pila[base];
+		return dato;
+	}else{
+		control = true;
+		dato = pila[helper_top];
+		return dato;
 	}
+}
+
+void Pila::eliminate(int helper_top, int dato) {
+	int cont = helper_top;
+		if (cont <= top) {
+			while (cont <= top) {
+				pila[cont] = pila[cont + 1];
+				cont++;
+			}
+			pila[top] = pila[base];
+			control = true;
+			top = top - 1;
+		}else{
+			control = false;
+			dato = pila[base];
+		}
+}
+
+void Pila::destroy(int helper_top, int dato) {
+	helper_top = 1;
+	while (top > 0) {
+		eliminate(helper_top, dato);
+	}
+	Pila();
+	pila = NULL;
 }

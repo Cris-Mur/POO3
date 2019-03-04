@@ -1,6 +1,6 @@
 #pragma once
-class Lista
-{
+
+class Lista{
 public:
 	int dir, size;
 	int *arr;
@@ -13,19 +13,28 @@ public:
 	bool cleanTest();
 	void add(int, int);
 	int view(int, int);
-	void eliminate();
+	void eliminate(int, int);
+	void destroy(int, int);
+};
+
+
+class Pila{
+public:
+	int base, top;
+	int size;
+	int *pila;
+	bool control;
+
+	Pila();
+	~Pila();
+	void set_sizePila(int);
+	int create(int);
+	bool cleanTest();
+	void add(int,int);
+	int view(int, int);
+	void eliminate(int, int);
+	void destroy(int, int);
 };
 
 
 #include "Funciones_Structure.cpp"
-
-class Pila
-{
-public:
-	int base = -1, top = -1;
-	int m, dato;
-	int *pila;
-	void create();
-	bool test();
-	void add();
-};
