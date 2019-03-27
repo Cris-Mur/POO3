@@ -65,12 +65,12 @@ int List::viewFirst(){
   return first->data;
 }
 
-void List::viewList(){
-	Node* headNode = first;
-	while(headNode!=NULL){
-		std::cout << "[DATA]: " << headNode->data << '\n';
-		headNode=headNode->nxt;
-	}
+void List::view(){
+  Node* headNode = first;
+  while (headNode != NULL){
+	  get_outputData(headNode->data);
+	  headNode = headNode->nxt;
+  }
 }
 
 void List::eliminateFirst() {
@@ -108,7 +108,7 @@ int Menus::m_General(){
 int Menus::m_Lista(){
   Menus();
   std::cout << "############ MENU ############" << '\n'
-            << "# 1. Crear lista vacia. ######" << '\n'
+            << "# 1. Crear listas vacias. ####" << '\n'
             << "# 2. Probar cabeza. ##########" << '\n'
             << "# 3. Insertar al comienzo. ###" << '\n'
             << "# 4. Insertar al final. ######" << '\n'

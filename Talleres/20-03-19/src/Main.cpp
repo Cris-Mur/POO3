@@ -5,11 +5,11 @@ La ejecución del programa comienza y termina ahí.
 #include "pch.h"
 #include <iostream>
 #include "Classes.h"
-#include "Functions.h"
 
 int main(int argc, char const *argv[]) {
   Menus menus;
-  List lista;
+  int cantList = 0;
+  List *arrList;
   int mainDATA = 0;
   while (menus.m_General() != 2) {
     std::cout << "[OPTION]: " << menus.option << '\n';
@@ -17,6 +17,13 @@ int main(int argc, char const *argv[]) {
       std::cout << "[OPTION]: " << menus.option << '\n';
       switch (menus.option) {
         case 1:
+          std::cout << "[ATTENTION]: cuantas listas desea crear?" << '\n'
+                    << "[CANT LIST]: ";
+                    std::cin >> cantList;
+                    arrList = new List[cantList];
+                    for (int i = 0; i < cantList; i++) {
+                      arrList[cantList]->arrList.create()
+                    }
           std::cout << "[WARNING]: esta creando una lista vacia." << '\n';
           lista.create();
           std::cout << "[WARNING]: lista creada." << '\n';
@@ -48,7 +55,10 @@ int main(int argc, char const *argv[]) {
           break;
         case 5:
           std::cout << "[LIST SIZE]: " << lista.size << '\n';
-          lista.viewList();
+            for (int i = 0; i < lista.size; i++){
+                lista.view();
+                std::cout << "[DATA]: " << lista.get_outputData << '\n';
+                }
           break;
         case 6:
           std::cout << "[LIST SIZE]: " << lista.size << '\n';

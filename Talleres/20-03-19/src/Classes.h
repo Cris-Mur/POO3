@@ -25,7 +25,7 @@ public:
 	void addinFirst(int);
 	void addinTail(int);
 	int viewFirst();
-	void viewList();
+	void view();
 	void eliminateFirst();
 	void destroyList();
 };
