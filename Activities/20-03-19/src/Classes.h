@@ -29,7 +29,7 @@ public:
 	long int viewFirst();
 	long int set_outputData(long int);
 	long int get_outputData();
-	Node* view();
+	Node* outList();
 	void eliminateFirst();
 	void destroyList();
 	void eliminateinMiddle(long int);

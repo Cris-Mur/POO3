@@ -1,8 +1,3 @@
-/* Nodes.cpp : Este archivo contiene la función "main".
-La ejecución del programa comienza y termina ahí.
-*/
-
-#include "pch.h"
 #include <iostream>
 #include "Classes.h"
 
@@ -13,7 +8,6 @@ List *arrList;
 int main(int argc, char const *argv[]) {
 
   long int cantList = 0;
-  //arrList = new List[cantList];
   long int mainDATA = 0;
   int dirList = 0;
   long int search = 0;
@@ -22,7 +16,7 @@ int main(int argc, char const *argv[]) {
     std::cout << "[OPTION]: " << menus.option << '\n';
     switch (menus.option) {
       case 1:
-        while (menus.m_Lista() != 10) {
+        while (menus.m_Lista() != 11) {
           std::cout << "[OPTION]: " << menus.option << '\n';
           switch (menus.option) {
         case 1:
@@ -83,10 +77,23 @@ int main(int argc, char const *argv[]) {
                       std::cout << "[ERROR]: Direccion erronea." << '\n';
                       break;
                     }else{
+                        Node* out = arrList[dirList].outList();
                       std::cout << "[ATTENTION]: agregando un nodo en un punto." << '\n'
                                 << "[LIST SIZE]: " << arrList[dirList].size << '\n';
-                      std::cout << "[ATTENTION]: despues de que dato va a Insertar." << '\n'
-                                << "[SEARCH DATA]: ";
+                      std::cout << "[ATTENTION]: despues de que dato va a Insertar." << '\n';
+                      std::cout << "[# " << dirList << " #]::";
+                      if (!arrList[dirList].empty) {
+                        for (int info = 0; info < arrList[dirList].size; info++) {
+                          std::cout << "[ " << out->data << " ]" ;
+                          out = out ->nxt;
+                        }
+                        std::cout << '\n';
+
+                      }else{
+                        std::cout << "[EMPTY]" << '\n';
+                      }
+
+                      std::cout << "[SEARCH DATA]: ";
                                 std::cin >> search;
                       std::cout << "[INPUT DATA]: ";
                                 std::cin >> mainDATA;
@@ -118,14 +125,15 @@ int main(int argc, char const *argv[]) {
         case 6:
         std::cout << "[CREATED LISTS]: " << cantList-1 << '\n';
           for (dirList = 1; dirList < cantList; dirList++) {
-            std::cout << '\n' << "[LIST]: " << dirList << '\n';
-            Node* out = arrList[dirList].view();
+            Node* out = arrList[dirList].outList();
             std::cout << "[LIST SIZE]: " << arrList[dirList].size << '\n';
+            std::cout << "[# " << dirList << " #]::";
               if (!arrList[dirList].empty) {
                 for (int info = 0; info < arrList[dirList].size; info++) {
-                  std::cout << "[DATA]:" << out->data << '\n';
+                  std::cout << "[ " << out->data << " ]" ;
                   out = out ->nxt;
                 }
+                std::cout << '\n';
 
               }else{
                 std::cout << "[EMPTY]" << '\n';
@@ -169,26 +177,64 @@ int main(int argc, char const *argv[]) {
                         }else{
                           break;
                         }
-                        //cantList = 0;
-                        //arrList = new List[cantList];
-
           break;
+        }
 
-      }
+        if (menus.option == 10) {
+
+
+          while (menus.m_listOperations() != 2) {
+            std::cout << "[OPTION]: " << menus.option << '\n';
+            if (menus.option == 1) {
+              std::cout << "[OPTION]: " << menus.option << '\n';
+                int dL1 = 0, dL2 = 0;
+
+                std::cout << "[CREATED LISTS]: " << cantList-1 << '\n';
+                  for (dirList = 1; dirList < cantList; dirList++) {
+                    Node* out = arrList[dirList].outList();
+                    std::cout << "[LIST SIZE]: " << arrList[dirList].size << '\n';
+                    std::cout << "[# " << dirList << " #]::";
+                      if (!arrList[dirList].empty) {
+                        for (int info = 0; info < arrList[dirList].size; info++) {
+                          std::cout << "[ " << out->data << " ]" ;
+                          out = out ->nxt;
+                        }
+                        std::cout << '\n';
+
+                      }else{
+                      std::cout << "[EMPTY]" << '\n';
+                      }
+
+                    }
+
+                    std::cout << ":: ¿que listas desea sumar?" << '\n'
+                              << "[LIST 1]: ";
+                              std::cin >> dL1;
+                    std::cout << "[LIST 2]: ";
+                              std::cin >> dL2;
+
+                              Node* out1 = arrList[dL1].outList();
+
+                              Node* out2 = arrList[dL2].outList();
+                    std::cout << "[# RESULT #]::";
+                  while (out1 != NULL || out2 != NULL) {
+                    std::cout << "[ " << out1->data + out2->data << " ]";
+                    out1 = out1->nxt;
+                    out2 = out2->nxt;
+                  }
+                  std::cout << '\n';
+                  delete out1;
+                  delete out2;
+                }
+            }
+
+          }
+
+
         }
       break;
       case 2:
-          while (menus.m_listOperations() != 2) {
-            std::cout << "[OPTION]: " << menus.option << '\n';
-              if (menus.option == 1) {
-                std::cout << "[OPTION]: " << menus.option << '\n';
-                List suma;
-                suma.create();
-                //suma.addinTail();
-                suma.view();
-
-              }
-            }
+      std::cout << "NOW IN CASE 10" << '\n';
         break;
 
   }

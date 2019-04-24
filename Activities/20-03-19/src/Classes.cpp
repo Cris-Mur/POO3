@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Classes.h"
 
 Node::Node(){
@@ -19,7 +18,7 @@ List::List(){
   size = -1;
 }
 
-List::~List(){/* instrucciones para la liberacion de nodos */}
+List::~List(){}
 
 void List::create() {
   first = NULL;
@@ -29,7 +28,7 @@ void List::create() {
 }
 
 bool List::test(){
-  if (control) {
+  if (empty) {
     return true;
   }else{
     return false;
@@ -47,6 +46,7 @@ void List::addinFirst(long int dat) {
   first = tempNode;
   empty = false;
   size++;
+  return;
 }
 
 void List::addinMiddle(long int dat, long int srch){
@@ -65,7 +65,7 @@ void List::addinTail(long int dat) {
   Node* headNode = first;
   set_inputData(dat);
   Node* tempNode = new Node(inputData);
-  if (headNode == NULL) {
+  if (test()) {
     addinFirst(dat);
   }else{
       while (headNode->nxt != NULL) {
@@ -77,25 +77,12 @@ void List::addinTail(long int dat) {
 }
 
 long int List::viewFirst(){
-  Node* headNode = first;
   return first->data;
 }
 
-long int List::set_outputData(long int dat){
-  outputData = dat;
-  return outputData;
-}
-
-long int List::get_outputData(){
-  return outputData;
-}
-
-Node* List::view() {
+Node* List::outList(){
   return first;
 }
-
-  /*tempNode = NULL;
-  delete tempNode;*/
 
 void List::eliminateFirst() {
   Node* headNode = first;
@@ -168,7 +155,8 @@ int Menus::m_Lista(){
             << "# 7. Eliminar primero. #######" << '\n'
             << "# 8. Eliminar en medio. ######" << '\n'
             << "# 9. Destruir lista. #########" << '\n'
-            << "# 10. Salir. ##################" << '\n'
+            << "# 10. Suma de listas. ########" << '\n'
+            << "# 11. Salir. #################" << '\n'
             << "##############################" << '\n'
             << "Opcion: ";
             std::cin >> option;
