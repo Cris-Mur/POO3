@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Classes.h"
 #include <iostream>
 
@@ -353,6 +352,203 @@ void SINGLELink::destroyList() {
   control = false;
   delete first;
 }
+
+DoubleLink::DoubleLink(){
+  ntry = NULL;
+  control = false;
+  empty = false;
+  size = -1;
+}
+
+DoubleLink::~DoubleLink(){}
+
+void DoubleLink::set_inputNAME(int n){
+  inputNAME = n;
+}
+
+void DoubleLink::create() {
+  ntry = NULL;
+  control = true;
+  empty = true;
+  size = 0;
+}
+
+bool DoubleLink::testEMPTY() {
+  if (empty) {
+    control = true;
+    return control;
+  }else{
+    control = false;
+    return control;
+  }
+}
+
+void DoubleLink::addinFirst(int name) {
+  set_inputNAME(name);
+  doubleNode* newHeader = new doubleNode(inputNAME);
+  if (testEMPTY()){
+      control = true;
+	   ntry = newHeader;
+     ntry->nxt = ntry;
+     ntry->bck = ntry->nxt;
+     empty = false;
+  }else{
+    control = true;
+
+    doubleNode* tail = ntry -> bck;
+
+    newHeader->nxt = ntry;
+    ntry->bck = newHeader;
+
+    tail->nxt = newHeader;
+    newHeader->bck = tail;
+
+    ntry = newHeader;
+  }
+  size++;
+}
+
+void DoubleLink::addinMiddle(int name, int srch) {
+  doubleNode* header = ntry;
+  doubleNode* headerNXT;
+  set_inputNAME(name);
+  doubleNode* tempNode = new doubleNode(inputNAME);
+
+  if (!testEMPTY()) {
+
+    while (header->data != srch) {
+      header = header->nxt;
+    }
+    headerNXT = header->nxt;
+
+    header->nxt = tempNode;
+    tempNode->bck = header;
+
+    tempNode->nxt = headerNXT;
+    headerNXT->bck = tempNode;
+
+  }else{
+    addinFirst(name);
+  }
+
+
+  size++;
+}
+
+void DoubleLink::addinTail(int name) {
+  set_inputNAME(name);
+  doubleNode* header = ntry;
+  doubleNode* tempNode = new doubleNode(inputNAME);
+  doubleNode* headerBCK = ntry->bck;
+
+  if (!testEMPTY()) {
+
+    header->bck = tempNode;
+    tempNode->nxt = header;
+
+    headerBCK->nxt = tempNode;
+    tempNode->bck = headerBCK;
+
+  }else{
+    addinFirst(name);
+    return;
+  }
+
+  size++;
+}
+
+int DoubleLink::viewENTRYname() {
+  return ntry->data;
+}
+
+doubleNode* DoubleLink::view() {
+  return ntry;
+}
+
+/*void DoubleLink::syncUP(doubleNode* sync) {
+  ntry = sync;
+}*/
+
+void DoubleLink::eliminateFirst() {
+  doubleNode* freenode = ntry;
+
+  if (freenode != NULL || size > 0) {
+    control = true;
+
+    ntry = ntry->nxt;
+    ntry->bck = NULL;
+
+    freenode->nxt = NULL;
+
+    delete freenode;
+
+    size--;
+  }else{control = false;}
+
+}
+
+void DoubleLink::eliminateinMiddle(int srch) {
+  doubleNode* header = ntry;
+  doubleNode* headerBCK;
+  if (header != NULL || size > 0) {
+    control = true;
+    while (header->data != srch) {
+      header = header->nxt;
+    }
+    headerBCK = header->bck;
+
+    doubleNode* freenode = header;
+
+    headerBCK->nxt = header->nxt;
+    header = header->nxt;
+    header->bck = headerBCK;
+
+    freenode->nxt = NULL;
+    freenode->bck = NULL;
+
+    delete freenode;
+    size--;
+  }else{control = false;}
+}
+
+void DoubleLink::eliminateTail() {
+  doubleNode* tail = ntry;
+  doubleNode* freenode;
+
+  if (tail != NULL || size > 0) {
+    control = true;
+    for (int i = 0; i < size; i++) {
+      tail = tail->nxt;
+    }
+    freenode = tail;
+
+    tail = tail->bck;
+    tail->nxt = ntry;
+
+    freenode->nxt = NULL;
+    freenode->bck = NULL;
+
+    delete freenode;
+
+    size--;
+  }else{
+    control = false;
+  }
+
+}
+
+void DoubleLink::destroyList(int op) {
+  if (op == 1) {
+    while (ntry != NULL) {
+      eliminateFirst();
+    }
+  }else if (op == 2) {
+    while (ntry != NULL) {
+      eliminateTail();
+    }
+  }
+}
+
 
 Menus::Menus(){
   option = 0;

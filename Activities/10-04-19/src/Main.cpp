@@ -1,11 +1,10 @@
 
-#include "pch.h"
 #include <iostream>
 #include "Classes.h"
 
 Header headers;
 SINGLELink singleLink;
-//DUALLink dualLink;
+DoubleLink doubleLink;
 //triNode headerLink;
 triNode* outHEAD;
 Menus menu;
@@ -42,7 +41,7 @@ int main(int argc, char const *argv[]) {
           if (TyNode == 1) {
             singleLink.create();
           }else if (TyNode == 2) {
-            //dualNode.create();
+            doubleLink.create();
           }else if (TyNode == 3) {
             //triNode.create();
           }else if (TyNode == 4) {
@@ -59,11 +58,11 @@ int main(int argc, char const *argv[]) {
                                   singleLink.addinFirst(data);
 
                       }else if (TyNode == 2) {
-                        /*std::cout << "[ATTENTION]" << '\n'
+                        std::cout << "[ATTENTION]" << '\n'
                                   << ":: Ingresando dato al inicio." << '\n'
                                   << "[DATA]: ";
                                   std::cin >> data;
-                        dualNode.create();*/
+                        doubleLink.addinFirst(data);
                       }else if (TyNode == 3) {
                         /*std::cout << "[ATTENTION]" << '\n'
                                   << ":: Ingresando dato al inicio." << '\n'
@@ -86,7 +85,7 @@ int main(int argc, char const *argv[]) {
                                       std::cin >> schr;
                             singleLink.addinMiddle(data, schr);
                           }else if (TyNode == 2) {
-                            /*std::cout << "[ATTENTION]" << '\n'
+                            std::cout << "[ATTENTION]" << '\n'
                                       << ":: Ingresando dato al inicio." << '\n'
                                       << "[DATA]: ";
                                       std::cin >> data;
@@ -94,7 +93,7 @@ int main(int argc, char const *argv[]) {
                                       << ":: ¿despues de cual dato?"
                                       << "[SEARCH DATA]: ";
                                       std::cin >> schr;
-                            dualNode.create();*/
+                            doubleLink.addinMiddle(data, schr);
                           }else if (TyNode == 3) {
                             /*std::cout << "[ATTENTION]" << '\n'
                                       << ":: Ingresando dato al inicio." << '\n'
@@ -115,7 +114,7 @@ int main(int argc, char const *argv[]) {
                                       std::cin >> data;
                                       singleLink.addinTail(data);
                             }else if (TyNode == 2) {
-                                      /*std::cout << "[ATTENTION]" << '\n'
+                                      std::cout << "[ATTENTION]" << '\n'
                                                 << ":: Ingresando dato al inicio." << '\n'
                                                 << "[DATA]: ";
                                                 std::cin >> data;
@@ -123,7 +122,7 @@ int main(int argc, char const *argv[]) {
                                                 << ":: ¿despues de cual dato?"
                                                 << "[SEARCH DATA]: ";
                                                 std::cin >> schr;
-                                      dualNode.create();*/
+                                      doubleLink.addinTail(data);
                             }else if (TyNode == 3) {
                                       /*std::cout << "[ATTENTION]" << '\n'
                                                 << ":: Ingresando dato al inicio." << '\n'
@@ -158,7 +157,23 @@ int main(int argc, char const *argv[]) {
 
 
                             }else if (TyNode == 2) {
-                              //dualNode.create();
+                              outHEAD = headers.outStructure();
+                              while (outHEAD -> name != search) {
+                                outHEAD = outHEAD->nxt;
+                              }
+                              doubleNode* out = doubleLink.view();
+                              std::cout << "[SIZE]: " << doubleLink.size << '\n'
+                                        << "[LIST]" << '\n'
+                                        << "[ " << outHEAD->name << " ]";
+                              for (int fix = 0; fix < doubleLink.size; fix++) {
+                                std::cout << "[ " << out->data <<" ]";
+                                out = out->nxt;
+                              }
+                              std::cout << '\n';
+
+                              outHEAD->strctDOUBLNode = doubleLink.view();
+                              outHEAD->Listsize = doubleLink.size;
+                              headers.syncUP(outHEAD);
                             }else if (TyNode == 3) {
                               //triNode.create();
                             }
@@ -195,10 +210,16 @@ int main(int argc, char const *argv[]) {
         case 6:
           outHEAD = headers.outStructure();
           for (int headdir = 0; headdir < headers.size; headdir++) {
-            oneNode* out = outHEAD->strctONENode;
+            if (outHEAD->) {
+              /* code */
+            }
             std::cout << "[ " << outHEAD->name  << " ]::";
             for (int i = 0; i < outHEAD->Listsize; i++) {
-              std::cout << "["<< out->data <<"]";
+              if (out = NULL) {
+                std::cout << "["<< dout->data <<"]";
+              }else{
+                std::cout << "["<< out->data <<"]";
+              }
               out = out->nxt;
             }
             std::cout << '\n';

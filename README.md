@@ -1,4 +1,4 @@
-# POO3
+﻿# POO3
 
 // este repositorio tiene como finalidad almacenar el trabajo realizado en la clase de programación 3 en la UMNG 2019-1
 
@@ -24,4 +24,9 @@
     **Tema:** primitivas en estructuras enlazadas.
 10. 10/04/19
     **Tema:** estructuras doblemente enlazadas, nodos multienlace.
-    
+11. 08/05/19
+    **Tema:** Examen parcial.
+12. 15/05/19
+    **Tema:** Complejidad de algoritmos de organización.
+13. 22/05/19
+    **Tema:** Introducción a arboles binarios primitivas.

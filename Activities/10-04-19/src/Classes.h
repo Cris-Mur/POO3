@@ -57,6 +57,35 @@ public:
 
 };
 
+class DoubleLink{
+private:
+	doubleNode* ntry;
+public:
+	bool control, empty;
+	int inputNAME;
+	int outputNAME;
+	int size;
+
+	DoubleLink();
+	~DoubleLink();
+	void set_inputNAME(int);
+	void create();
+	bool testEMPTY();
+	void addinFirst(int);
+	void addinMiddle(int, int);
+	void addinTail(int);
+	int viewENTRYname();
+	void eliminateFirst();
+	void eliminateinMiddle(int);
+	void eliminateTail();
+	void destroyList(int);
+	doubleNode* view();
+	//void syncUP(triNode*);
+
+
+};
+
+
 class Header{
 private:
 	triNode* ntry;
@@ -98,4 +127,4 @@ public:
 	int MENU03();
 };
 
-//#include "Classes.cpp"
+#include "Classes.cpp"
